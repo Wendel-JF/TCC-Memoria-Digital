@@ -9,7 +9,7 @@ class Conexao
     private $endereco = "localhost";
     private $login = "root";
     private $senha = "1234";
-    private $banco = "my_web_struct";
+    private $banco = "memorial_digital";
     public  $mysqli;
 
     public function __construct()   

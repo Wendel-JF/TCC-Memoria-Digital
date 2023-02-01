@@ -1,0 +1,10 @@
+h1 {
+    color: white;
+}
+.trumbowyg-editor, .trumbowyg-textarea {
+    background-color: #fff;
+    color: black;
+}
+::placeholder,label {
+    color: rgb(136, 106, 106);
+}

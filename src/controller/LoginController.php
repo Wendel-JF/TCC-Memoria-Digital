@@ -32,7 +32,7 @@ class LoginController extends Controller implements RequestHandlerInterface
     public function index(): ResponseInterface
     {   
         if (array_key_exists("usuario", $_SESSION)) {
-            return new Response(302, ["Location" => "/main_page"],);
+            return new Response(302, ["Location" => "/"],);
         } else {
             $bodyHTTP = $this->getHTTPBodyBuffer("/login/login.php");
             $response = new Response(200, [], $bodyHTTP);
@@ -50,19 +50,18 @@ class LoginController extends Controller implements RequestHandlerInterface
         $usuarioDB = $ModelConnect->getUsuarioByLogin($loginUsuario);
 
         if ($loginUsuario == $usuarioDB->getLogin()  && $usuarioDB->validarSenha($senhaUsuario)) {
-            //session_start();
             $_SESSION["usuario"] = $loginUsuario;
             $_SESSION["credential"] = $usuarioDB->getNivel(); //nivel1, nivel2, adm
-            return new Response(302, ["Location" => "/main_page"],);
+            return new Response(302, ["Location" => "/"],);
         } else {
-            return new Response(302, ["Location" => "/login"],);
+            echo "alert('Dados estão incorretos!')";
+            return new Response(302, ["Location" => "/"],);
         }
     }
 
     public function deslogar(): ResponseInterface
     {
         session_unset();
-     //return new Response(302, ["Location" => "/login"],);
-     return new Response(302, ["Location" => "/main_page"],);
+        return new Response(302, ["Location" => "/"],);
     }
 }

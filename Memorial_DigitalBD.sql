@@ -22,16 +22,28 @@ insert into usuario values
 select * from usuario;
 
 create table personagens (
-id int not null auto_increment,
-documento longblob, 
+id int not null primary key auto_increment,
 nome varchar(100) NOT NULL, 
 preço decimal(8,2),
 região varchar(30) default 'Interior de Pernambuco',
 sexo enum('M','F') default 'M',
 idade decimal(2) NOT NULL,
 oficio varchar(30),
-primary key (id)
+id_Doc int,
+CONSTRAINT fk_doc FOREIGN KEY (id_Doc) REFERENCES documentos (id)
 ) DEFAULT CHARSET = utf8;
+
+insert into personagens values
+(DEFAULT,'João', '1240', 'Riacho das Almas', 'M', '18', 'Carpinteiro',null),
+(DEFAULT,'Maria', '100000', 'Agrestina', 'F', '99', 'Costureira',null);
+
+select * from personagens;
+select * from personagens where idade >= 17 and preço >= 200 AND sexo LIKE '%%' or nome '%d%';
+select personagens.id,personagens.nome,personagens.id_Doc,documentos.titulo,documentos.usuario from personagens join documentos 
+on documentos.id = personagens.id_Doc order by personagens.id desc;
+
+/*truncate personagens;  */
+describe personagens;
 
 create table imagem(
 	id int auto_increment,
@@ -43,7 +55,7 @@ create table imagem(
 
 create table documentos(
 	id int auto_increment,
-    nome varchar(100),
+    titulo varchar(100),
 	documento longblob not null,
     data_upload varchar(20),
     usuario varchar(50),
@@ -52,14 +64,6 @@ create table documentos(
 
 select * from documentos;
 
-insert into personagens values
-(DEFAULT,null,'João', '1240', 'Riacho das Almas', 'M', '18', 'Carpinteiro'),
-(DEFAULT,null,'Maria', '100000', 'Agrestina', 'F', '99', 'Costureira');
-
-select * from personagens;
-
-/*truncate personagens;  */
-describe personagens;
 
 
 

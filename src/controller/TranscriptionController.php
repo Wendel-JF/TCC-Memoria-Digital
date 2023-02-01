@@ -14,6 +14,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use My_Web_Struct\controller\SearchController;
+
 //Gerar pdf 
 use Dompdf\Dompdf;
 
@@ -50,7 +52,7 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
 
     public function create(): ResponseInterface
     {
-        $validate = $this->validateCredentials(["adm", "nivel2"]);
+        $validate = $this->validateCredentials(["adm", "nivel2","nivel1"]);
         if (!is_null($validate)) {
             return $validate;
         }
@@ -61,14 +63,11 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
 
     public function addTranscricao(ServerRequestInterface $request): ResponseInterface
     {
-        $validate = $this->validateCredentials(["adm", "nivel2"]);
-        if (!is_null($validate)) {
-            return $validate;
-        }
+        $textarea_com_quebra_de_linha = nl2br($request->getParsedBody()["transcricao"]);
 
         $documento = new Documentos(
             null,
-            $request->getParsedBody()["transcricao"],
+            $textarea_com_quebra_de_linha,
             $request->getParsedBody()["titulo"],
             $_SESSION["usuario"],
             date('d/m/Y-H:i')
@@ -77,17 +76,13 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
         $documentosBD = new DocumentosBD();
         $documentosBD->adicionar($documento);
 
-        $response = new Response(302, ["Location" => "/transcricao/lista"], null);
+        $response = new Response(302, ["Location" => "/personagens/cadastro"], null);
 
         return $response;
     }
 
     public function read(): ResponseInterface
     {
-        $validate = $this->validateCredentials(["adm", "nivel2"]);
-        if (!is_null($validate)) {
-            return $validate;
-        }
         $documentosBD = new DocumentosBD();
         
         $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
@@ -119,10 +114,12 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
             return $validate;
         }
         
+        $textarea_com_quebra_de_linha = nl2br($request->getParsedBody()["transcricao"]);
+
         $documentosBD = new DocumentosBD();
         $transcricao = new Documentos(
             $request->getQueryParams()["id"],
-            $request->getParsedBody()["transcricao"],
+            $textarea_com_quebra_de_linha,
             $request->getParsedBody()["titulo"],
             $_SESSION["usuario"],
             date('d/m/Y-H:i')
@@ -143,6 +140,9 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
         }
 
         $documentosBD = new DocumentosBD();
+        $escravosBD = new EscravosBD();
+
+        $escravosBD->removerId_doc($request->getQueryParams()["id"]);
         $documentosBD->remover($request->getQueryParams()["id"]);
 
         $response = new Response(302, ["Location" => "/transcricao/lista"], null);
@@ -152,16 +152,6 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
     {   $documentosBD = new DocumentosBD();
 
         $transcricao = $documentosBD->getDocumentos($request->getQueryParams()["id"]);
-
-        // Instanciar e usar a classe dompdf para gerar pdf 
-        $dompdf = new Dompdf();
-        //colocar conteudo no pdf no caso estamos esta vindo direto da caixa de texto atraves do metodo post
-
-         $dompdf->loadHtml("twwwwwwwf");
-         
-         $dompdf->output();
-       // $pdf = $dompdf->stream("ddddddd.pdf", array("Attachment" => false));
-        
        
         $bodyHttp = $this->getHTTPBodyBuffer("/transcricao/view.php", ["ExibirDoc" => $transcricao]);
         $response = new Response(200, [], $bodyHttp);
@@ -174,15 +164,17 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
 
         $transcricao = $documentosBD->getDocumentos($request->getQueryParams()["id"]);
 
+        $dados = "<h1>$transcricao->titulo</h1>";
+        $dados .= $transcricao->documento;
+
         // Instanciar e usar a classe dompdf para gerar pdf 
         $dompdf = new Dompdf();
-        //colocar conteudo no pdf no caso estamos esta vindo direto da caixa de texto atraves do metodo post
 
-        $dompdf->loadHtml("$transcricao->documento");
+        //colocar conteudo no pdf no caso estamos esta vindo direto da caixa de texto atraves do metodo post
+        $dompdf->loadHtml("$dados");
 
         //Configurar o tamanho e a orientao do papel do pdf
         // landscape = Imprimir no formato paisagem, portrait = retrato
-
         // $dompdf->setPaper('A4', 'portrait');
 
         // Render the HTML as PDF

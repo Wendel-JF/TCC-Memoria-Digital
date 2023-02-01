@@ -1,5 +1,6 @@
 let search = document.getElementById('search');
 
+
     search.addEventListener("keydown", function(event) {
         if (event.key == "Enter") {
             searchData();
@@ -7,7 +8,6 @@ let search = document.getElementById('search');
     });
 
     function searchData() {
-        window.location = '/pesquisa?search=' + search.value;
+        window.location = '/personagens?search=' + search.value+'&pagina=1';
     }
 
- 

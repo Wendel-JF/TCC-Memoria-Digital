@@ -131,7 +131,7 @@ class UsuarioBD
         $preparacao->execute();
 
         $resultado = $preparacao->get_result();
-        if ($resultado == false) {
+        if ($resultado == null) {
             return null;
         }
 

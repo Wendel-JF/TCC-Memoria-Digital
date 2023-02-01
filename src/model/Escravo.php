@@ -10,8 +10,9 @@ class Escravo
     private $região;
     private $idade;
     private $oficio;
+	public $id_doc;
 
-    public function __construct($nome, $preço,$sexo, $região, $idade,$oficio ,$id = null)
+    public function __construct($nome, $preço, $sexo, $região, $idade, $oficio, $id_doc,$id = null)
     {
         $this->nome = $nome;
         $this->preço= $preço;
@@ -19,6 +20,7 @@ class Escravo
         $this->região = $região;
         $this->idade = $idade;
         $this->oficio = $oficio;
+        $this->id_doc = $id_doc;
         $this->id = $id;
     }
 
@@ -76,4 +78,9 @@ class Escravo
 	public function setOficio($oficio){
 		$this->oficio = $oficio;
 	}
+	public function getIdDoc() {
+		return $this->id_doc;
+	}
+	
 }
+

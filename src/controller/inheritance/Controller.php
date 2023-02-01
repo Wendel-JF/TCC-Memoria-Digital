@@ -18,13 +18,10 @@ class Controller
     }
 
     public function validateCredentials(array $credentials)
-    {   /*
-        if (!array_key_exists("credential", $_SESSION)) {
-            return new Response(302, ["Location" => "/login"],);
-        } else if (!in_array($_SESSION["credential"], $credentials)) {
+    {   
+        if (!in_array($_SESSION["credential"], $credentials)) {
             return new Response(302, ["Location" => "/erro/acesso_negado"],);
         }
         return null;
-        */
     }
 }

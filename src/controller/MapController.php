@@ -14,10 +14,7 @@ class MapController extends Controller implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $validate = $this->validateCredentials(["adm", "nivel2", "nivel1"]);
-        if (!is_null($validate)) {
-            return $validate;
-        }
+        
         $bodyHTTP = $this->getHTTPBodyBuffer("/mapa/mapa.php");
         $response = new Response(200, [], $bodyHTTP);
         return  $response;

@@ -61,7 +61,25 @@ class DocumentosBD
 
         $this->conexao->fecharConexao();
     }
+    public function getLista()
+    {
+        $comando = "SELECT * FROM documentos ORDER BY id DESC";
 
+        $resultado = $this->conexao->mysqli->query($comando);
+        if ($resultado == false) {
+            return null;
+        }
+
+        $transcricao = [];
+        
+        while ($linha = $resultado->fetch_assoc()) {
+            $transcricao[] = new Documentos($linha["id"], $linha["documento"], $linha["titulo"], $linha["usuario"], $linha["data_upload"]);
+        }
+
+
+        $this->conexao->fecharConexao();
+        return $transcricao;
+    }
     public function atualizar(Documentos $transcricoesAtualizadas)
     {
         $comando = "UPDATE documentos SET documento = ?, titulo = ?, data_upload = ?, usuario = ? WHERE id = ?;";
@@ -110,8 +128,9 @@ class DocumentosBD
     public function getDocumentos($id)
     {
         $comando = "SELECT * FROM documentos WHERE id = ?;";
-
+        
         $preparacao = $this->conexao->mysqli->prepare($comando);
+        
         $preparacao->bind_param("d", $id);
         $preparacao->execute();
 
@@ -119,7 +138,7 @@ class DocumentosBD
         if ($resultado == false) {
             return null;
         }
-
+        
         $linha = $resultado->fetch_assoc();
         $transcricao = new Documentos($linha["id"], $linha["documento"], $linha["titulo"], $linha["usuario"], $linha["data_upload"]);
         $this->conexao->fecharConexao();
