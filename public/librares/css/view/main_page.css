@@ -1,0 +1,18 @@
+main > .container {
+    margin-top: 170px;
+    max-width: 900px;
+    
+  }
+  .caixa-de-pesquisa {
+    display: flex;
+    gap: .1%;
+}
+#search {
+    border-radius: 15px;
+}
+#search:hover {
+    background-color: #F5F4F4;
+}
+.btn.btn-dark {
+    border-radius: 25px;
+}

@@ -7,7 +7,7 @@ use My_Web_Struct\model\Usuario;
 
 class UsuarioBD
 {
-    private $conexao;
+    public $conexao;
 
     public function __construct()
     {
@@ -16,7 +16,8 @@ class UsuarioBD
 
     public function adicionar(Usuario $usuario)
     {
-        $comando = "INSERT INTO usuario (login, senha, nivel) VALUES(?, ?, ?);";
+        $comando = "INSERT INTO usuario (login, senha, nivel) VALUES (?, ?, ?);";
+
         $login = $usuario->getLogin();
         $senha = $usuario->getSenhaMd5();
         $nivel = $usuario->getNivel();
@@ -42,19 +43,25 @@ class UsuarioBD
 
     public function atualizar(Usuario $usuairoAtualizado)
     {
-        $comando = "UPDATE TABLE usuario SET login = ?, senha = ?, nivel= ? WHERE id = ?;";
+        $comando = "UPDATE usuario SET login = ?, senha = ?, nivel= ? WHERE id = ?;";
+
+        $id = $usuairoAtualizado->getId();
+        $login = $usuairoAtualizado->getLogin();
+        $senha = $usuairoAtualizado->getSenhaMd5();
+        $nivel = $usuairoAtualizado->getNivel();
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param(
-            "sssd",
-            $usuairoAtualizado->getLogin(),
-            $usuairoAtualizado->getSenhaMd5(),
-            $usuairoAtualizado->getNivel(),
+            "sssi",
+            $login,
+            $senha,
+            $nivel,
             $id
         );
         $preparacao->execute();
 
         $resultado = $preparacao->get_result();
+
         if ($resultado == false) {
             return null;
         }
@@ -63,11 +70,10 @@ class UsuarioBD
 
     public function remover($id)
     {
-        $comando = "DELETE FROM TABLE usuario WHERE id = ?;";
+        $comando = "DELETE FROM usuario WHERE id = ?;";
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
-        var_dump($id);
-        $preparacao->bind_param("s", $id);
+        $preparacao->bind_param("i", $id);
         $preparacao->execute();
 
         $resultado = $preparacao->get_result();
@@ -104,6 +110,24 @@ class UsuarioBD
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param("d", $id);
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+        if ($resultado == false) {
+            return null;
+        }
+
+        $linha = $resultado->fetch_assoc();
+        $usuario = new Usuario($linha["login"], $linha["nivel"], $linha["senha"], null, $linha["id"]);
+        $this->conexao->fecharConexao();
+        return $usuario;
+    }
+    public function getUsuarioByLogin($login)
+    {
+        $comando = "SELECT * FROM usuario WHERE login = ?;";
+
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param("s", $login);
         $preparacao->execute();
 
         $resultado = $preparacao->get_result();

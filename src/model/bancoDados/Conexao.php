@@ -6,11 +6,11 @@ use mysqli;
 
 class Conexao
 {
-    private $endereco = "127.0.0.1";
+    private $endereco = "localhost";
     private $login = "root";
-    private $senha = "pitang";
+    private $senha = "1234";
     private $banco = "my_web_struct";
-    public $mysqli;
+    public  $mysqli;
 
     public function __construct()   
     {

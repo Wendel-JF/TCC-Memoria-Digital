@@ -4,9 +4,14 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8bacbe173058a338e39c378fe2891c17
+class ComposerStaticInit4e2cc465cc44b4d8222aac020eaa1a6d
 {
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Svg\\' => 4,
+            'Sabberworm\\CSS\\' => 15,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Server\\' => 16,
@@ -20,14 +25,31 @@ class ComposerStaticInit8bacbe173058a338e39c378fe2891c17
         'M' => 
         array (
             'My_Web_Struct\\' => 14,
+            'Masterminds\\' => 12,
         ),
         'H' => 
         array (
             'Http\\Message\\' => 13,
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
+        ),
+        'D' => 
+        array (
+            'Dompdf\\' => 7,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
         'Psr\\Http\\Server\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
@@ -50,22 +72,35 @@ class ComposerStaticInit8bacbe173058a338e39c378fe2891c17
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'Masterminds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
         'Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-http/message-factory/src',
+        ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8bacbe173058a338e39c378fe2891c17::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8bacbe173058a338e39c378fe2891c17::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit8bacbe173058a338e39c378fe2891c17::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4e2cc465cc44b4d8222aac020eaa1a6d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4e2cc465cc44b4d8222aac020eaa1a6d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit4e2cc465cc44b4d8222aac020eaa1a6d::$classMap;
 
         }, null, ClassLoader::class);
     }

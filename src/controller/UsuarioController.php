@@ -3,7 +3,8 @@
 namespace My_Web_Struct\controller;
 
 use My_Web_Struct\controller\inheritance\Controller;
-use My_Web_Struct\model\Aluno;
+use My_Web_Struct\model\bancoDados\UsuarioBD;
+use My_Web_Struct\model\Usuario;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -16,12 +17,18 @@ class UsuarioController extends Controller implements RequestHandlerInterface
         $path_info = $request->getServerParams()["PATH_INFO"];
         $response = null;
 
-        if (!array_key_exists("nivel", $_SESSION)) {
-            $response = new Response(302, ["Location" => "/login"],);
-        } else if (strpos($path_info, "cadastro") &&  $_SESSION["nivel"] == "adm") {
+        if (strpos($path_info, "cadastro")) {
             $response = $this->create();
-        } else if (strpos($path_info, "lista") && $_SESSION["nivel"] != "nivel1") {
+        } else if (strpos($path_info, "add")) {
+            $response = $this->addUsuario($request);
+        } else if (strpos($path_info, "lista")) {
             $response = $this->list();
+        } else if (strpos($path_info, "atualizar")) {
+            $response = $this->atualizar($request);
+        } else if (strpos($path_info, "update")) {
+            $response = $this->update($request);
+        } else if (strpos($path_info, "delete")) {
+            $response = $this->delete($request);
         } else {
             $bodyHttp = $this->getHTTPBodyBuffer("/erro/Erro_404.php",);
             $response = new Response(200, [], $bodyHttp);
@@ -31,21 +38,99 @@ class UsuarioController extends Controller implements RequestHandlerInterface
 
     public function create(): ResponseInterface
     {
+        $validate = $this->validateCredentials(["adm"]);
+        if (!is_null($validate)) {
+            return $validate;
+        }
         $bodyHttp = $this->getHTTPBodyBuffer("/usuario/cadastro.php");
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
-    public function list(): ResponseInterface
+
+    public function addUsuario(ServerRequestInterface $request): ResponseInterface
     {
 
-        $aluno1 = new Aluno("Zezinho", "3º TDS");
-        $aluno2 = new Aluno("Maria", "3º TDS");
-        $aluno3 = new Aluno("Matheus", "3º TDS");
+        $validate = $this->validateCredentials(["adm"]);
+        if (!is_null($validate)) {
+            return $validate;
+        }
 
-        $dados = ["listaAlunos" => [$aluno1, $aluno2, $aluno3]];
+        $usuario = new Usuario(
+            $request->getParsedBody()["login"],
+            $request->getParsedBody()["nivel"],
+            null,
+            $request->getParsedBody()["password"]
+        );
+
+        $usuarioBD = new UsuarioBD();
+        $usuarioBD->adicionar($usuario);
+
+        $response = new Response(302, ["Location" => "/usuario/lista"], null);
+
+        return $response;
+    }
+
+    public function list(): ResponseInterface
+    {
+        $validate = $this->validateCredentials(["adm", "nivel2"]);
+        if (!is_null($validate)) {
+            return $validate;
+        }
+        $usuarioBD = new UsuarioBD();
+
+        $dados = ["listaUsuarios" => $usuarioBD->getLista()];
 
         $bodyHttp = $this->getHTTPBodyBuffer("/usuario/lista.php", $dados);
         $response = new Response(200, [], $bodyHttp);
+        return $response;
+    }
+    public function atualizar(ServerRequestInterface $request): ResponseInterface
+    {
+        $validate = $this->validateCredentials(["adm"]);
+        if (!is_null($validate)) {
+            return $validate;
+        }
+
+        $usuarioBD = new UsuarioBD();
+        $usuario = $usuarioBD->getUsuario($request->getQueryParams()["id"]);
+        $bodyHttp = $this->getHTTPBodyBuffer("/usuario/atualizar.php", ["usuario" => $usuario]);
+        $response = new Response(200, [], $bodyHttp);
+        return $response;
+    }
+    public function update(ServerRequestInterface $request): ResponseInterface
+    {
+        $validate = $this->validateCredentials(["adm"]);
+        if (!is_null($validate)) {
+            return $validate;
+        }
+
+        $usuarioBD = new UsuarioBD();
+        $usuario = new Usuario(
+            $request->getParsedBody()["login"],
+            $request->getParsedBody()["nivel"],
+            null,
+            $request->getParsedBody()["password"],
+            $request->getQueryParams()["id"]
+        );
+
+        $usuarioBD->atualizar($usuario);
+
+        $response = new Response(302, ["Location" => "/usuario/lista"], null);
+        return $response;
+    }
+
+    public function delete(ServerRequestInterface $request): ResponseInterface
+    {
+        $validate = $this->validateCredentials(["adm"]);
+
+        if (!is_null($validate)) {
+            return $validate;
+        }
+
+        $usuarioBD = new UsuarioBD();
+        $usuarioBD->remover($request->getQueryParams()["id"]);
+
+        $response = new Response(302, ["Location" => "/usuario/lista"], null);
         return $response;
     }
 }
