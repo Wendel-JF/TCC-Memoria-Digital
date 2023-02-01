@@ -6,20 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonte -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <!-- Fonte NOTO SANS-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap" rel="stylesheet">
-
-    <!-- Fonte LIBRE BASKEVILLE-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Ms+Madi&display=swap" rel="stylesheet">
+ 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet" crossorigin="anonymous">
@@ -27,19 +14,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
 
-
-    <!-- CSS only -->
-
     <!-- <link href="/librares/dist_select2/css/select2.css" rel="stylesheet" /> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
     <link rel="stylesheet" href="/librares/css/bootstrap/bootstrap.min.css">
-
-
 
     <link rel="icon" type="imagem/png" href="/images/icon.png" />
 
@@ -115,7 +96,7 @@
                             <li class="nav-item dropdown-center active me-5">
                                 <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?php if ($_SESSION["fotoPerfil"] != null) { ?>
-                                        <img src="data:png;base64,<?php echo base64_encode($_SESSION["fotoPerfil"]); ?>" alt="mdo" width="100" height="100" class="rounded-circle"> <?php } ?>
+                                        <img src="data:png;base64,<?php echo base64_encode($_SESSION["fotoPerfil"]); ?>" alt="mdo" width="80" height="80" class="rounded-circle"> <?php } ?>
                                     <?php echo $_SESSION["usuario"]; ?>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -181,6 +162,7 @@
                     </div>
                 </div>
             </div>
+            
             <!-- Modal Login -->
 
             <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

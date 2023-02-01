@@ -120,7 +120,7 @@ class UsuarioBD
         while ($linha = $resultado->fetch_assoc()) {
             $listaUsuario[] = new Usuario($linha["login"], $linha["nivel"],$linha["foto_perfil"], $linha["senha"], null, $linha["id"]);
         }
-
+        
         $this->conexao->fecharConexao();
         return $listaUsuario;
     }

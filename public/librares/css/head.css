@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&family=Titillium+Web:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body { 
@@ -29,7 +28,7 @@ h1,h2 {
 .logo {
   padding-top: 8px;
   width: 160px;
-  height: 160px;
+  height: 130px;
 }
 .navbar-expand-md {
   background-color: #222222;

@@ -48,7 +48,7 @@ class DocumentosBD
         $busca = "SELECT * FROM documentos ORDER BY id DESC";
         $todos = $this->conexao->mysqli->query($busca);
 
-        $registros = "5";
+        $registros = "10";
 
         $tr = mysqli_num_rows($todos);
         $this->tp = ceil($tr / $registros);

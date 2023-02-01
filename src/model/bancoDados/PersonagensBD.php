@@ -57,15 +57,13 @@ class PersonagensBD
             }
             $docDB = new DocumentosBD();
            
-            //$D = $docDB->getSearch($pesquisa);
-            $D = null;
             $busca = "SELECT * FROM personagens WHERE (nome LIKE '%$pesquisa%' or região LIKE '%$pesquisa%' or oficio LIKE '%$pesquisa%') 
             AND idade >= $filtro_idade_min AND valor >= $filtro_valor_min AND idade <= $filtro_idade_max AND valor <= $filtro_valor_max $pesquisa_genero ORDER BY $ordenar";
         }
 
         $todos = $this->conexao->mysqli->query($busca);
 
-        //$numero_registro == null ? $numero_registro = 15 : $numero_registro;
+        //paginacao
         $registros = "10";
 
         $this->tr = mysqli_num_rows($todos);

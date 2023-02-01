@@ -12,6 +12,7 @@
         background-color: #212529;
         padding: 15px;
         margin-bottom: 0px;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.8);
     }
     .table-striped {
         box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.8);
@@ -37,7 +38,7 @@
             <td></td>
         </tr>
         <tr>
-            <th scope="row">ALUNOS - 3TDS B: </th>
+            <th scope="row">ALUNOS - <br> 3TDS B: </th>
             <td>Wendel José Frazão</td>
             <td>Gabriel Oliveira </td>
             <td>Elisson Gabriel</td>

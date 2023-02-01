@@ -1,35 +1,97 @@
 <?php require __DIR__ . "/../share/head.php"; ?>
 <style>
-    
-    .imagem{
-        background-image: url("/images/mapa-regioes-pernambuco.jpg");
-        width: 1000px;
-        height: 500px;
-     
-    }
-    #divbotao {
-      margin-left: 800px;
-      margin-top: 100px;
-    }
+  .imagem {
+    background-image: url("/images/mapa-regioes-pernambuco.jpg");
+    width: 1000px;
+    height: 500px;
+
+  }
+
+  i {
+    position: absolute;
+    font-size: 50px;
+  }
+
+  #img1 {
+    margin-left: 800px;
+    margin-top: 200px;
+  }
+
+  #img2 {
+    margin-left: 800px;
+    margin-top: 300px;
+  }
+  #img3 {
+    margin-left: 700px;
+    margin-top: 240px;
+  }
+  #img4 {
+    margin-left: 600px;
+    margin-top: 270px;
+  }
+  #img5 {
+    margin-left: 500px;
+    margin-top: 250px;
+  }
+  #img6 {
+    margin-left: 400px;
+    margin-top: 300px;
+  }
+  #img7 {
+    margin-left: 300px;
+    margin-top: 250px;
+  }
+  #img8 {
+    margin-left: 200px;
+    margin-top: 240px;
+  }
+  #img9 {
+    margin-left: 100px;
+    margin-top: 250px;
+  }
 </style>
 <h1>Mapa</h1>
 
-<div class ="imagem">
-<a href="/personagens?search=Caruaru" role="button" aria-pressed="true" id="divbotao">
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-</svg>
-</a>
-</div>
-<br><br>
-<button type="button" class="btn btn-lg btn-danger" id="popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<div class="imagem">
+  <a href="/personagens?search=Caruaru" role="button" aria-pressed="true" id="divbotao">
+    <i id="img1" class="bi bi-flag-fill" title="Caruaru"></i>
+  </a>
+  <a href="/personagens?search=Fazenda das Almas" role="button" aria-pressed="true" id="divbotao">
+    <i id="img2" class="bi bi-flag-fill" title="Fazenda das Almas, julgado do Pajeú"></i>
+  </a>
+  <a href="/personagens?search=Fazenda das Almas" role="button" aria-pressed="true" id="divbotao">
+    <i id="img2" class="bi bi-flag-fill" title="Fazenda das Almas, julgado do Pajeú"></i>
+  </a>
+  <a href="/personagens?search=Arrabalde da vila de Cimbres" role="button" aria-pressed="true" id="divbotao">
+    <i id="img3" class="bi bi-flag-fill" title="Arrabalde da vila de Cimbres"></i>
+  </a>
+  <a href="/personagens?search=Povoação das Flores, Julgado do Pajeú" role="button" aria-pressed="true" id="divbotao">
+    <i id="img4" class="bi bi-flag-fill" title="Povoação das Flores, Julgado do Pajeú"></i>
+  </a>
+  <a href="/personagens?search=Serra do Arapuá, Julgado do Pajeú" role="button" aria-pressed="true" id="divbotao">
+    <i id="img5" class="bi bi-flag-fill" title="Serra do Arapuá, Julgado do Pajeú"></i>
+  </a> 
+  <a href="/personagens?search=Sítio Papagaio, Ribeira do São Francisco, Tacaratu" role="button" aria-pressed="true" id="divbotao">
+    <i id="img6" class="bi bi-flag-fill" title="Sítio Papagaio, Ribeira do São Francisco, Tacaratu"></i>
+  </a> 
+   
+  <a href="/personagens?search=Sítio Papagaio, Ribeira do São Francisco, Tacaratu" role="button" aria-pressed="true" id="divbotao">
+    <i id="img7" class="bi bi-flag-fill" title="Sítio Papagaio, Ribeira do São Francisco, Tacaratu"></i>
+  </a> 
+  <a href="/personagens?search=Sítio de Santa Cruz, Termo de Cimbres" role="button" aria-pressed="true" id="divbotao">
+    <i id="img8" class="bi bi-flag-fill" title="Sítio de Santa Cruz, Termo de Cimbres"></i>
+  </a> 
+  <a href="/personagens?search=Fazendas Poção, Barro vermelho e Salgado, Ribeira do Moxotó, termo da vila de Cimbres" role="button" aria-pressed="true" id="divbotao">
+    <i id="img9" class="bi bi-flag-fill" title="Fazendas Poção, Barro vermelho e Salgado, Ribeira do Moxotó, termo da vila de Cimbres"></i>
+  </a> 
+   
+ 
+  
+ 	
 
-<a href="#" title="Header" data-toggle="popover" data-placement="top" data-content="Content">Click</a>
-<script>
-function test() {
-    alert('ola')
-}
-$('#example').tooltip(options)
-</script>
+</div>
+
+
+<br><br>
 
 <?php require __DIR__ . "/../share/footer.php"; ?>

@@ -62,14 +62,14 @@
             <div class="modal fade" id="RemoverModel<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header bg-black text-white">
                             <h5 class="modal-title" id="exampleModalLongTitle">Remover Documento</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <P><b>Tem certeza de que deseja remover esse registro?!</b></p>
+                            <P><b>Tem certeza de que deseja remover esse Documento?!</b></p>
                             <P style="color:red;"> <b>Essa ação não pode ser desfeita!</b></p>
                         </div>
                         <div class="modal-footer">

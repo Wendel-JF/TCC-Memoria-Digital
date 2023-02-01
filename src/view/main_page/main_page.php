@@ -21,5 +21,5 @@
      disponibilizar dados sobre a escravidão nos sertões de Pernambuco, Brasil, nos séculos XVIII e XIX.
 </p>
 
-<script src="./librares/js/view/pesquisa.js"></script>
+<script src="./librares/js/view/personagens.js"></script>
 <?php require __DIR__ . "/../share/footer.php"; ?>
