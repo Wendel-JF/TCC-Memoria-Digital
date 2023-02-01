@@ -40,15 +40,37 @@ class UsuarioBD
 
         $this->conexao->fecharConexao();
     }
+    public function addFoto(Usuario $usuario)
+    {
+        $comando = "UPDATE usuario SET foto_perfil = ? WHERE id = ?;";
 
-    public function atualizar(Usuario $usuairoAtualizado)
+        $id = $_SESSION["id_usuario"];
+        $foto_perfil  = $usuario->getFoto_Perfil();
+       
+        $preparacao = $this->conexao->mysqli->prepare($comando);
+        $preparacao->bind_param(
+            "si",
+            $foto_perfil,
+            $id
+        );
+        
+        $preparacao->execute();
+
+        $resultado = $preparacao->get_result();
+
+        if ($resultado == false) {
+            return null;
+        }
+        $this->conexao->fecharConexao();
+    }
+    public function atualizar(Usuario $usuarioAtualizado)
     {
         $comando = "UPDATE usuario SET login = ?, senha = ?, nivel= ? WHERE id = ?;";
 
-        $id = $usuairoAtualizado->getId();
-        $login = $usuairoAtualizado->getLogin();
-        $senha = $usuairoAtualizado->getSenhaMd5();
-        $nivel = $usuairoAtualizado->getNivel();
+        $id = $usuarioAtualizado->getId();
+        $login = $usuarioAtualizado->getLogin();
+        $senha = $usuarioAtualizado->getSenhaMd5();
+        $nivel = $usuarioAtualizado->getNivel();
 
         $preparacao = $this->conexao->mysqli->prepare($comando);
         $preparacao->bind_param(
@@ -96,9 +118,8 @@ class UsuarioBD
         $listaUsuario = [];
         
         while ($linha = $resultado->fetch_assoc()) {
-            $listaUsuario[] = new Usuario($linha["login"], $linha["nivel"], $linha["senha"], null, $linha["id"]);
+            $listaUsuario[] = new Usuario($linha["login"], $linha["nivel"],$linha["foto_perfil"], $linha["senha"], null, $linha["id"]);
         }
-
 
         $this->conexao->fecharConexao();
         return $listaUsuario;
@@ -118,11 +139,11 @@ class UsuarioBD
         }
 
         $linha = $resultado->fetch_assoc();
-        $usuario = new Usuario($linha["login"], $linha["nivel"], $linha["senha"], null, $linha["id"]);
+        $usuario = new Usuario($linha["login"], $linha["nivel"],$linha["foto_perfil"], $linha["senha"], null, $linha["id"]);
         $this->conexao->fecharConexao();
         return $usuario;
     }
-    public function getUsuarioByLogin($login)
+    public function getUsuarioLogin($login)
     {
         $comando = "SELECT * FROM usuario WHERE login = ?;";
 
@@ -136,7 +157,7 @@ class UsuarioBD
         }
 
         $linha = $resultado->fetch_assoc();
-        $usuario = new Usuario($linha["login"], $linha["nivel"], $linha["senha"], null, $linha["id"]);
+        $usuario = new Usuario($linha["login"], $linha["nivel"],$linha["foto_perfil"], $linha["senha"], null, $linha["id"]);
         $this->conexao->fecharConexao();
         return $usuario;
     }

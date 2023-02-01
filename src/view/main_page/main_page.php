@@ -2,6 +2,7 @@
 <link rel="stylesheet" type="text/css" href="./librares/css/view/main_page.css" />
 
 <div class="titulo">
+<img src="/images/logo-main-page.png"  alt="mdo"> </a>
 <h1>MEMORIAL DIGITAL</h1>
 <h5>das Vítimas da Escravidão nos Sertões de Pernambuco <br> (séc. XVIII-XIX).</h5>
 </div>

@@ -8,13 +8,15 @@ class Usuario
     private $id;
     private $login;
     private $senha;
+    private $foto_perfil;
     private $senhaMd5;
     private $nivel;
 
-    public function __construct($login, $nivel, $senhaMd5 = null, $senha = null, $id = null)
+    public function __construct($login, $nivel,$foto_perfil, $senhaMd5 = null, $senha = null, $id = null)
     {
         $this->login = $login;
         $this->senha = $senha;
+        $this->foto_perfil = $foto_perfil;
         $this->senhaMd5 = $senhaMd5;
         $this->nivel = $nivel;
         $this->id = $id;
@@ -46,5 +48,9 @@ class Usuario
     public function getNivel()
     {
         return $this->nivel;
+    }
+    public function getFoto_Perfil()
+    {
+        return $this->foto_perfil;
     }
 }

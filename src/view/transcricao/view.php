@@ -10,7 +10,6 @@
     }
 
     body {
-        /*background: rgb(204, 204, 204);*/
         text-decoration: dashed;
         color: black;
     }

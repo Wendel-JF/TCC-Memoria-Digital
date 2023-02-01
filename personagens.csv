@@ -1,0 +1,40 @@
+"id";"nome";"data_de_referência";"região";"oficio";"genero";"coondição";"parentesco";"outras_informações";"saude";"idade";"valor";"id_doc"
+1;"José";1785;"Fazendas Poção, Barro vermelho e Salgado, Ribeira do Moxotó, termo da vila de Cimbres";"";"Masculino";"Escravo/crioulo";"";"";"";20;100000.0;0
+2;"Francisco";1785;"Fazenda das Almas, julgado do Pajeú";"";"Masculino";"Escravo/crioulo";"";"Doente: calor de fígado";"";30;50000.0;0
+3;"Ventura";1785;"Fazenda das Almas, julgado do Pajeú";"";"Masculino";"Escrabo/Angola";"";"Doente: potroso";"";60;40000.0;0
+4;"Bastião";1785;"Fazenda das Almas, julgado do Pajeú";"";"Masculino";"Escrabo/Angola";"";"";"";30;100000.0;0
+5;"Gracia";1785;"Fazenda das Almas, julgado do Pajeú	";"";"F";"Escrava/ crioula	";"";"Fígado destemperado na cabeça";"";20;50000.0;0
+6;"Arcângela";1785;"Fazenda das Almas, Julgado do Pajeú";"";"F";"Escrava/Jeje	";"";"";"";20;75000.0;0
+7;"Luiz";1785;"Fazenda das Almas, Julgado do Pajeú.";"Ofício de Carapina; Oficial de Marceneiro.";"";"Escravo/Crioulo";"Casado com a escrava Catharina";"Muito preguiçoso/Acostumado a fugir.";"Dores pelas ancas.";35;35.0;0
+8;"José/[João?]";1785;"Fazenda das Almas, Julgado do Pajeú";"";"M";"Escravo/Crioulo";"";"";"";35;100000.0;0
+9;"Maria";1785;"Fazenda das Almas, Julgado do Pajeú	";"";"F";"Escrava/Angola	";"";"";"";60;20000.0;0
+10;"Antônio";1785;"Fazenda das Almas, Julgado do Pajeú";"";"M";"Escravo/Angola";"Solteiro";"";"";46;70000.0;0
+11;"Benedito";1785;"Fazenda das Almas, Julgado do Pajeú";"";"M";"Escravo/Angola	";"";"";"";60;50000.0;0
+12;"Tomé";1785;"Fazenda das Almas, Julgado do Pajeú";"Gado";"M";"Escravo/Crioulo	";"";"";"";55;80000.0;0
+13;"Luiza";1784;"Sítio de Santa Cruz, Termo de Cimbres";"";"F";"Escrava/Guiné	";"";"";"";45;55000.0;0
+14;"Francisco";1784;"Sítio de Santa Cruz, Termo de Cimbres";"";"M";"Escravo/Crioulinho";"";"";"";6;40000.0;0
+15;"[Sem Nome]";1784;"Sítio de Santa Cruz, Termo de Cimbres";"";"M";"Escravo/Preto de nação mina	";"";"";"";40;80000.0;0
+16;"Manuel	";1782;"Povoação das Flores, Julgado do Pajeú	";"";"M";"[Crioulo]	";"Filho do casal Caetano e Sezilia	";"";"";0;0.0;0
+17;"Anna";1782;"Povoaão das Flores, Julgado do Pajeú";"";"F";"[Crioula]";"Filha do casal Caetano e Sezilia	";"";"";0;0.0;0
+18;"Grácia";1782;"Povoaão das Flores, Julgado do Pajeú";"";"F";"Escrava/Crioula";"Filha do casal Caetano e Sezilia	";"";"";14;60000.0;0
+19;"Sezilia";1782;"Povoação das Flores, Julgado do Pajeú";"";"F";"Escrava/Crioula	";"Mulher de Caetano Angola	";"Recebeu a carta de alforria com a morte de seus se";"";0;0.0;0
+20;"Caetano";1782;"Povoação das Flores, Julgado do Pajeú	";"";"M";"Escravo/Negro	";"Casado com a crioula Sezilia	";"";"";0;0.0;0
+21;"Dos";1782;"Povoação das Flores, Julgado do Pajeú";"";"M";"Escravo/Angola	";"";"";"";0;0.0;0
+22;"João	";1782;"Povoação das Flores, Julgado do Pajeú";"";"M";"Escravo/Angola";"";"";"";0;0.0;0
+23;"Luis";1782;"Povoação das Flores, Julgado do Pajeú";"";"M";"Escravo/Crioulo	";"";"";"";30;100000.0;0
+24;"Pedro";1782;"Povoação das Flores, Julgado do Pajeú	";"";"M";"Escravo/Crioulo";"";"";"";0;0.0;0
+25;"Catharina";1779;"Sítio Papagaio, Ribeira do São Francisco, Tacaratu";"";"F";"Escrava/Negra	";"";"";"";50;40000.0;0
+26;"[Sem Nome]";1775;"Serra do Arapuá, Julgado do Pajeú";"";"M";"Escravo/Negro	";"";"";"";70;16000.0;0
+27;"José";1775;"Povoação das Flores, Julgado do Pajeú";"";"M";"Escravo/Negro	";"";"Velho";"";0;40000.0;0
+28;"Antônio José";1775;"Povoação das Flores, Julgado do Pajeú";"";"M";"Escravo/Negro";"";"";"";0;86000.0;0
+29;"Antonio";1775;"Povoação das Flores, Julgado do Pajeú	";"";"M";"Escravo/Crioulo	";"";"";"";22;95000.0;0
+30;"Tomás	";1775;"Povoação das Flores, Julgado do Pajeú";"";"M";"Escravo/Crioulo	";"";"";"";38;85000.0;0
+31;"Ana";1775;"Povoação das Flores, Julgado do Pajeú";"";"F";"Escrava/Negra Angola	";"";"Velha";"";0;50000.0;0
+32;"Rita";1775;"Povoação das Flores, Julgado do Pajeú";"";"F";"Escrava/Negra	";"";"Velha";"";0;60000.0;0
+33;"Feliz	";1775;"Povoação das Flores, Julgado do Pajeú	";"";"M";"Escravo/Angola	";"";"";"";0;40000.0;0
+34;"Feliz";1774;"Arrabalde da vila de Cimbres";"";"M";"Escravo/Angola	";"";"";"";0;40000.0;0
+35;"Antonio";1774;"Arrabalde da vila de Cimbres	";"";"M";"Escravo/Crioulo";"";"";"";0;55000.0;0
+36;"João";1774;"Arrabalde da vila de Cimbres";"";"M";"Escravo/Crioulo	";"";"";"";0;80000.0;0
+37;"Maria	";1774;"Arrabalde da vila de Cimbres";"";"F";"Escrava/Crioula";"";"";"";7;60000.0;0
+38;"Frutuoso";1774;"Arrabalde da vila de Cimbres	";"";"M";"Escravo/Crioulo";"";"";"";28;90000.0;0
+39;"Severino";1774;"Arrabalde da vila de Cimbres";"";"M";"Escravo/Crioulo	";"";"";"";43;75000.0;0

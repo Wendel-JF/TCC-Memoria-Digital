@@ -3,9 +3,9 @@
 <?php require __DIR__ . "/../share/head.php"; ?>
 
 
-<link rel="stylesheet" href="/librares/dist/ui/trumbowyg.min.css">
-<link rel="stylesheet" href="/librares/dist/plugins/emoji/ui/trumbowyg.emoji.min.css">
-<link rel="stylesheet" href="/librares/dist/plugins/colors/ui/trumbowyg.colors.min.css">
+<link rel="stylesheet" href="/librares/trumbowyg/ui/trumbowyg.min.css">
+<link rel="stylesheet" href="/librares/trumbowyg/plugins/emoji/ui/trumbowyg.emoji.min.css">
+<link rel="stylesheet" href="/librares/trumbowyg/plugins/colors/ui/trumbowyg.colors.min.css">
 <link rel="stylesheet" href="/librares/css/view/transcricao.css">
 
 <h2 >Atualize o Documento</h2>
@@ -23,37 +23,37 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<script src="/librares/dist/trumbowyg.min.js"></script>
+<script src="/librares/trumbowyg/trumbowyg.min.js"></script>
 
-<script type="text/javascript" src="/librares/dist/langs/pt_br.min.js"></script>
+<script type="text/javascript" src="/librares/trumbowyg/langs/pt_br.min.js"></script>
 
-<script src="/librares/dist/plugins/emoji/trumbowyg.emoji.min.js"></script>
+<script src="/librares/trumbowyg/plugins/emoji/trumbowyg.emoji.min.js"></script>
 
-<script src="/librares/dist/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
+<script src="/librares/trumbowyg/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
 
-<script src="/librares/dist/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js"></script>
+<script src="/librares/trumbowyg/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js"></script>
 
-<script src="/librares/dist/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
+<script src="/librares/trumbowyg/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
 
-<script src="/librares/dist/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js"></script>
+<script src="/librares/trumbowyg/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js"></script>
 
-<script src="/librares/dist/plugins/base64/trumbowyg.base64.min.js"></script>
+<script src="/librares/trumbowyg/plugins/base64/trumbowyg.base64.min.js"></script>
 
 <script src="//rawcdn.githack.com/RickStrahl/jquery-resizable/0.35/dist/jquery-resizable.min.js"></script>
 <!-- Import Trumbowyg plugins... -->
-<script src="/librares/dist/plugins/resizimg/trumbowyg.resizimg.min.js"></script>
+<script src="/librares/trumbowyg/plugins/resizimg/trumbowyg.resizimg.min.js"></script>
 
-<script src="/librares/dist/plugins/colors/trumbowyg.colors.min.js"></script>
+<script src="/librares/trumbowyg/plugins/colors/trumbowyg.colors.min.js"></script>
 
-<script src="/librares/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js"></script>
+<script src="/librares/trumbowyg/plugins/pasteimage/trumbowyg.pasteimage.min.js"></script>
 
-<script src="/librares/dist/plugins/pasteembed/trumbowyg.pasteembed.min.js"></script>
+<script src="/librares/trumbowyg/plugins/pasteembed/trumbowyg.pasteembed.min.js"></script>
 
-<script src="/librares/dist/plugins/lineheight/trumbowyg.lineheight.min.js"></script>
+<script src="/librares/trumbowyg/plugins/lineheight/trumbowyg.lineheight.min.js"></script>
 
-<script src="/librares/dist/plugins/indent/trumbowyg.indent.min.js"></script>
+<script src="/librares/trumbowyg/plugins/indent/trumbowyg.indent.min.js"></script>
 
-<script src="/librares/dist/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
+<script src="/librares/trumbowyg/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
 
 <script>
     $('#trumbowyg-editor').trumbowyg({

@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&family=Titillium+Web:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body { 
   background-image: radial-gradient(#d63f3f, #811818);
   /*background-color: #811818;*/
   color: #fff;
-  font-family: 'Roboto';
+ /* font-family: 'Roboto';*/
+  font-family: 'Montserrat', sans-serif;
  /*font-family: 'Source Serif Pro', serif;*/
 }
 main > .container {
   width: auto;
-  max-width: 1024px;
+  max-width: 1020px;
   padding: 60px 15px;
 }
 header {
-  margin-bottom: 100px;
+  margin-bottom: 160px;
 }
 .titulo {
   text-align: center;
@@ -25,12 +28,12 @@ h1,h2 {
 }
 .logo {
   padding-top: 8px;
-  width: 220px;
-  height: 130px;
+  width: 160px;
+  height: 160px;
 }
 .navbar-expand-md {
   background-color: #222222;
-  height: 100px;
+  height: 160px;
 }
 
 .button {

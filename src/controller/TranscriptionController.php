@@ -2,19 +2,17 @@
 
 namespace My_Web_Struct\controller;
 
-date_default_timezone_set('America/Sao_Paulo');
+date_default_timezone_set('America/Recife');
 
 use My_Web_Struct\controller\inheritance\Controller;
-use My_Web_Struct\model\bancoDados\EscravosBD;
-use My_Web_Struct\model\Escravo;
+use My_Web_Struct\model\bancoDados\PersonagensBD;
+use My_Web_Struct\model\Personagem;
 use My_Web_Struct\model\bancoDados\DocumentosBD;
 use My_Web_Struct\model\Documentos;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use My_Web_Struct\controller\SearchController;
 
 //Gerar pdf 
 use Dompdf\Dompdf;
@@ -52,7 +50,7 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
 
     public function create(): ResponseInterface
     {
-        $validate = $this->validateCredentials(["adm", "nivel2","nivel1"]);
+        $validate = $this->validateCredentials(["adm", "nivel2", "nivel1"]);
         if (!is_null($validate)) {
             return $validate;
         }
@@ -76,7 +74,7 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
         $documentosBD = new DocumentosBD();
         $documentosBD->adicionar($documento);
 
-        $response = new Response(302, ["Location" => "/personagens/cadastro"], null);
+        $response = new Response(302, ["Location" => "/personagens"], null);
 
         return $response;
     }
@@ -84,7 +82,7 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
     public function read(): ResponseInterface
     {
         $documentosBD = new DocumentosBD();
-        
+
         $pag = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
         $documentosBD->getListaDocumentos($pag);
         $dados = ["listarDocumentos" => $documentosBD];
@@ -93,7 +91,7 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
         $response = new Response(200, [], $bodyHttp);
         return $response;
     }
-    
+
     public function atualizar(ServerRequestInterface $request): ResponseInterface
     {
         $validate = $this->validateCredentials(["adm", "nivel2"]);
@@ -101,6 +99,10 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
             return $validate;
         }
 
+        if (is_null($request->getQueryParams()["id"])) {
+            $validate = $this->validateCredentials([""]);
+            return $validate;
+        }
         $documentosBD = new DocumentosBD();
         $transcricao = $documentosBD->getDocumentos($request->getQueryParams()["id"]);
         $bodyHttp = $this->getHTTPBodyBuffer("/transcricao/atualizar.php", ["listarDocumentos" => $transcricao]);
@@ -113,7 +115,7 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
         if (!is_null($validate)) {
             return $validate;
         }
-        
+
         $textarea_com_quebra_de_linha = nl2br($request->getParsedBody()["transcricao"]);
 
         $documentosBD = new DocumentosBD();
@@ -140,23 +142,30 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
         }
 
         $documentosBD = new DocumentosBD();
-        $escravosBD = new EscravosBD();
+        $PersonagensBD = new PersonagensBD();
 
-        $escravosBD->removerId_doc($request->getQueryParams()["id"]);
+        $PersonagensBD->removerId_doc($request->getQueryParams()["id"]);
         $documentosBD->remover($request->getQueryParams()["id"]);
 
         $response = new Response(302, ["Location" => "/transcricao/lista"], null);
         return $response;
     }
     public function view(ServerRequestInterface $request): ResponseInterface
-    {   $documentosBD = new DocumentosBD();
+    {
+        $documentosBD = new DocumentosBD();
 
-        $transcricao = $documentosBD->getDocumentos($request->getQueryParams()["id"]);
-       
-        $bodyHttp = $this->getHTTPBodyBuffer("/transcricao/view.php", ["ExibirDoc" => $transcricao]);
-        $response = new Response(200, [], $bodyHttp);
-        return $response;
+        $documento = $documentosBD->getDocumentos($request->getQueryParams()["id"]);
+
+        if ($request->getQueryParams()["id"] != null) {
+            $bodyHttp = $this->getHTTPBodyBuffer("/transcricao/view.php", ["ExibirDoc" => $documento]);
+            $response = new Response(200, [], $bodyHttp);
+            return $response;
+        } 
+            $validate = $this->validateCredentials(["0"]);
+            return $validate;
+        
     }
+    
     public function GerarPdf(ServerRequestInterface $request)
     {
 
@@ -179,14 +188,12 @@ class TranscriptionController extends Controller implements RequestHandlerInterf
 
         // Render the HTML as PDF
         $pdf = $dompdf->render();
-        
-         $dompdf->output();
-        
-        // Output the generated PDF to Browser
+
+        $dompdf->output();
+
 
         //fazer download do pdf
-        
+
         $dompdf->stream("$transcricao->titulo" . ".pdf");
-        
     }
 }
