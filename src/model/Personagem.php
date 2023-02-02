@@ -6,12 +6,12 @@ class Personagem
     private $id;
     private $nome;
     private $valor;
-	private $saude;
+	  private $saude;
     private $genero;
     private $região;
     private $idade;
     private $oficio;
-	private $data_de_referencia;
+	  private $data_de_referencia;
 	private $coondicao;
 	private $parentesco;
 	private $outras_informacoes;
